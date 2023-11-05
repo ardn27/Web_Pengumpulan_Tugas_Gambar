@@ -1,0 +1,365 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style-type: none;
+    font-family: Poppins;
+}
+
+body{
+    background-color: #fff;
+}
+
+.navbar-nav{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+    background-color: #12486B;
+}
+
+.logo-nama{
+    padding-top: 1rem;
+    color: #fff;
+    font-size: 16px;
+    margin-left: 8rem;
+}
+
+.logo-nama span{
+    background-color: #fff;
+    color: #0066CC;
+    border-radius: 30px;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+.navbar{
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    font-size: 14px;
+    margin-top: 1rem;
+    margin-right: 8rem;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+ul li a{
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    transition: ease;
+}
+
+ul li a:hover{
+    opacity: 0.8;
+}
+
+.home{
+    display: flex;
+    flex-direction: column;
+    margin-top: 8rem;
+}
+
+.home h1{
+    font-size: 56px;
+    font-weight: bold;
+    display: flex;
+    justify-content: start;
+    color: #12486B;
+}
+
+.home p{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    font-size: 12px;
+}
+
+.btn-start{
+width: 30%;
+font-weight: 100;
+font-size: 14px;
+color: #fff;
+margin-top: 1rem;
+background-color: #0066CC;
+padding: 10px 30px;
+border: 2px solid #0066cc;
+box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+border-radius: 43px;
+transition : 1104ms;
+transform: translateY(0);
+display: flex;
+flex-direction: row;
+align-items: center;
+cursor: pointer;
+text-transform: uppercase;
+}
+
+.btn-start:hover{
+
+transition : 1104ms;
+padding: 10px 50px;
+transform : translateY(-0px);
+background-color: #fff;
+color: #0066cc;
+border: solid 2px #0066cc;
+}
+
+
+.countainer{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    gap: 6rem;
+    justify-content: space-evenly;
+}
+
+.project-card{
+    width: 100%;
+    margin-top: 8rem;
+    box-shadow: 0 20px 20px rgba(62, 52, 205, 0.623);
+}
+
+.project img{
+    width: 20rem;
+    object-fit: cover;
+    height: 20rem;
+}
+
+.project-card p{
+    display: flex;
+    justify-content: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.btn{
+font-weight: 100;
+font-size: 14px;
+color: #fff;
+background-color: #0066cc;
+padding: 10px 30px;
+border: 2px solid #0066cc;
+box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+border-radius: 43px;
+transition : 988ms;
+transform: translateY(0);
+display: flex;
+flex-direction: row;
+align-items: center;
+cursor: pointer;
+text-transform: uppercase;
+}
+
+.btn:hover{
+
+transition : 988ms;
+padding: 10px 38px;
+transform : translateY(-5px);
+background-color: #fff;
+color: #0066cc;
+border: solid 2px #0066cc;
+}
+
+/* project */
+.countainer-post{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: start;
+}
+
+.alert{
+    background-color: #D2DE32;
+    color: #fff;
+    padding: 1rem;
+    border-radius: 20px;
+    font-size: 16px;
+    width: 20rem;
+    height: 2rem;
+    z-index: 9999;
+}
+
+#form-posting {
+    display: none;
+}
+
+.post {
+    display: flex;
+    width: 45%;
+    justify-content: start;
+    align-items: start;
+    color: #fff;
+    background-color: #419197;
+    border-radius: 10px;
+    margin: 1rem;
+    padding-left: 1rem;
+    padding-bottom: 1rem;
+    border: 1px solid #12486B;
+    flex-direction: column;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+}
+
+.profil{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    gap: 5px;
+    margin-left: 4px;
+    margin-bottom: 5px;
+}
+
+.profil input{
+    color: #12486B;
+    outline: none;
+    border-radius: 5px;
+}
+
+.tittle{
+    width: 50%;
+    padding: 1rem;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.tittle label{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+textarea{
+    border: 2px solid #12486B;
+    border-radius: 10px;
+    outline: none;
+    margin-left: 2px;
+}
+
+.file{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.btn-post{
+    font-weight: 100;
+font-size: 14px;
+color: #fff;
+background-color: #0066cc;
+padding: 6px 24px;
+border: 2px solid #0066cc;
+box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+border-radius: 43px;
+display: flex;
+flex-direction: row;
+align-items: center;
+}
+
+.container-p{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.post-card{
+    display: flex;
+    width: 50%;
+    padding: 3rem;
+    border-radius: 5px;
+    margin-top: 2rem;
+    border: 2px solid #12486B;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+}
+
+.card-username{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.username{
+    font-size: 14px;
+    padding-bottom: 1rem;
+}
+
+.username-user{
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.header-user {
+    padding-bottom: 1rem;
+}
+.image{
+    width: 35rem;
+    padding: 2rem;
+    background-color: #fff;
+    border: 1px solid black;
+    object-fit: cover;
+}
+
+/* Gaya tombol pemicu dropdown */
+.dropbtn {
+    background-color: #fff;
+    color: #12486B;
+    font-size: 16px;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+  }
+
+  /* The container <div> - needed to position the dropdown content */
+  .dropdown {
+    position: relative;
+    background-color: #fff;
+    display: inline-block;
+  }
+
+  /* Dropdown Content (Hidden by Default) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+
+  /* Change color of dropdown links on hover */
+  .dropdown-content a:hover {background-color: #f1f1f1}
+
+  /* Show the dropdown menu on hover */
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  /* Change the background color of the dropdown button when the dropdown content is shown */
+  .dropdown:hover .dropbtn {
+    background-color: #419197;
+  }
+
+.message-alert{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: start;
+}
