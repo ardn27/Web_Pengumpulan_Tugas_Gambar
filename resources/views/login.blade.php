@@ -24,6 +24,12 @@
       background-color: #fff;
     }
 
+    .title span{
+        padding: 3px;
+        color: #fff;
+        border-radius: 30px;
+        background-color: #0066CC;
+    }
     .card-title {
       text-align: center;
       margin-bottom: 20px;
@@ -48,15 +54,15 @@
 @endif
 
 
-    @if (session('errors'))
-    <div class="alert alert-danger text-center">{{(session('errors'))}}</div>
+    @if (session('error'))
+    <div class="alert alert-danger text-center">{{(session('error'))}}</div>
     @endif
 
 <div class="row">
     <div class="col-md-4 offset-md-4 mt-5">
-        <div class="text-center"><h1 class="">ShowEveryone</h1></div>
+        <div class="text-center"><h1 class="title text-primary">Show<span>Everyone</span></h1></div>
         <div class="card">
-            <div class="card-header text-center bg-dark text-light">
+            <div class="card-header text-center bg-primary text-light">
                 ShowEveryone
             </div>
             <div class="card-body p-2">
@@ -64,24 +70,24 @@
                     @csrf
                     <div class="form-group">
                       <input type="email"
-                        class="form-control"
+                        class="form-control {{$errors->has('email') ? 'is-invalid' : '' }}" value="{{old('email')}}"
                         name="email"
                         placeholder="Email" />
-                        {{-- @error('email')
+                        @error('email')
                         <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror --}}
+                        @enderror
                     </div>
                     <div class="form-group pt-2">
                       <input type="password"
                         name="password"
-                        class="form-control"
+                        class="form-control {{$errors->has('password') ? 'is-invalid' : ''}}" value="{{old('password')}}"
                         placeholder="Password" />
-                        {{-- @error('password')
+                        @error('password')
                         <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror --}}
+                        @enderror
                     </div>
                     <div class="form-group p-3">
-                        <button type="submit" class="btn btn-dark btn-block">Login</button>
+                        <button type="submit" class="btn btn-primary btn-block">Login</button>
                     </div>
                 </form>
                 <div class="card-footer">

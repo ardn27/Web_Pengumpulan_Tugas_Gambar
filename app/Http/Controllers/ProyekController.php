@@ -7,18 +7,34 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Middleware\CekUserLogin;
 use App\Models\User;
 use App\Models\Proyek;
+use App\Models\Comment;
 use Carbon\Carbon;
 
 class ProyekController extends Controller
 {
-    public function Home(){
-        return view ('/index-home');
+    public function Home(Request $request){
+        $user = Auth::user();
+        return view ('/index-home', compact('user'))->with('userLoggedin', auth()->check());
     }
 
     public function indexProject(Request $request)
    {
-    $showData=Proyek::orderBy('created_at', 'desc')->get();
-    return view('index-project', ['datas'=>$showData])->with('userLoggedin', auth()->check());
+    $user = Auth::user();
+    $showData = Proyek::orderBy('created_at', 'desc')->get();
+    return view('index-project', compact('user', 'showData'))->with('userLoggedin', auth()->check());
+   }
+
+   public function About(){
+    return view('/about');
+   }
+
+   public function editProject($id)
+   {
+    $edit = Proyek::find($id);
+    if ($edit->user_id != auth()->user()->id) {
+        return redirect()->back()->with('errors', 'Anda Tidak Memiliki Akses Untuk Mengubah Postingan Ini');
+    }
+    return view('edit-project', ['post'=>$edit]);
    }
 
     public function store(Request $request)
@@ -42,7 +58,7 @@ class ProyekController extends Controller
 
         $humanReadableDate = $createdAt->diffForHumans();
 
-        return redirect('/project')->with(['humanReadableDate' => $humanReadableDate])->with('success', 'Gambar Berhasil Ditambahkan');
+        return redirect('/project')->with(['humanReadableDate' => $humanReadableDate])->with('success', 'Postingan Berhasil Diunggah');
 
     }
 
@@ -56,14 +72,21 @@ class ProyekController extends Controller
         if ($request->hasFile('gambar')) {
             $request->file('gambar')->move('public/image', $request->file('gambar')->getClientOriginalName());
             $edit->gambar = $request->file('gambar')->getClientOriginalName();
-            }
+        }
 
-        $addProject->save();
+        $edit->save();
+        return redirect('/project')->with('success', 'Postingan berhasil Diubah');
     }
 
     public function delete($id)
     {
-        $dtdelete=Proyek::find($id);
+        $dtdelete = Proyek::find($id);
+
+        // Periksa apakah pengguna adalah pemilik proyek
+        if ($dtdelete->user_id != auth()->user()->id) {
+            return redirect()->back()->with('errors', 'Anda tidak dapat menghapus postingan ini');
+        }
+
         $dtdelete->delete();
 
         return redirect('/project');

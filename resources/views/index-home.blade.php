@@ -7,16 +7,34 @@
     <link rel="stylesheet" href="style.css">
     <title>Home</title>
 </head>
-<body>
     <body>
+    @php
+    $namaPengguna = explode(' ', Auth::user()->name);
+    $namaDepan = $namaPengguna[0];
+    @endphp
         <nav class="navbar-nav">
             <ul class="logo-nama">Show<span>Everyone</span></ul>
                 <ul class="navbar">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/project">Project</a>
+                <li><a href="/">Home</a></li>
+                <li><a href="/project">Project</a>
                 </li>
-                <li><a href="/project">About</a>
+                <li><a href="/about">About</a>
                 </li>
+            </ul>
+            <ul class="nav-user">
+                @if ($userLoggedin == false)
+                    <li><a href="/login-form"><i class="fa-solid fa-arrow-right-to-bracket"></i></a>
+                    </li>
+                @endif
+                @if ($userLoggedin == true)
+                    <li><a href="/profil">
+                            <img class="img-nav" src="{{ asset('storage/' . $user->profile_picture) }}" alt="">
+                        </a>
+                    </li>
+                    <li><a href="/profil">
+                            <p class="nav-user-profil">Halo, <span>{{ $namaDepan }}</span></p>
+                        </a> </li>
+                @endif
             </ul>
         </nav>
         <div class="countainer">
@@ -28,15 +46,14 @@
                 <p>With ShowEveryone, you can effortlessly <br>share your projects with everyone.
                 <br>Upload, narrate, and make your work visible to the world</p>
                 <a class="btn-start" href="/project">Get Started ></a>
-                {{-- <h3>To Website</h3>
-                <h3>Project Multimedia</h3> --}}
             </div>
             <div class="project">
                 <div class="project-card">
-                    <img src="assets/beatles.png" alt="">
-                    <p>Project 1</p>
+                   <img src="{{('assets/icon.png')}}" alt="">
                 </div>
             </div>
         </div>
+        <div class="countainer">
+    </div>
 </body>
 </html>

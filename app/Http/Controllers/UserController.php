@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
+use App\Models\Proyek;
 use Illuminate\Support\Facades\Auth;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -19,15 +22,31 @@ class UserController extends Controller
         return view('login');
     }
 
+    public function Profile(Request $request){
+        $user = Auth::user();
+        $project = Proyek::where('user_id', $user->id)->get();
+        $totalPosts = $user->proyek()->count();
+        return view('profile' , compact('user', 'project', 'totalPosts'));
+    }
 
     public function auth(Request $request)
     {
+        $this->validate($request, [
+            'email' => 'required|email',
+            'password' => 'required',
+        ],[
+            'email.required' => 'Email Tidak Boleh Kosong',
+            'email.email' => 'Email salah',
+            'password.required' => 'Password Tidak Boleh Kosong',
+            'password.password' => 'Password Salah',
+        ]);
+
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            return redirect('/');
+            return redirect('/project');
         } else {
-            return redirect()->back()->with(['errors'=> 'email atau password salah']);
+            return redirect()->back()->with('error', 'Email atau Password Salah');
         }
     }
 
@@ -74,5 +93,22 @@ class UserController extends Controller
         return redirect('/project');
     }
 
+    public function addPictureProfile(Request $request){
+        $user = Auth::user();
+        if ($request->hasFile('profile_picture')) {
+            $image = $request->file('profile_picture');
+            $filename = 'profile_picture_' . time() . '.' . $image->getClientOriginalExtension();
 
+            // Simpan gambar ke storage
+            $image->storeAs('public', $filename);
+            // Hapus gambar lama jika ada
+            if ($user->profile_picture) {
+                Storage::disk('public')->delete($user->profile_picture);
+            }
+            // Update kolom profil gambar di tabel pengguna
+            $user->update(['profile_picture' => $filename]);
+        }
+
+        return redirect('/profil');
+    }
 }

@@ -50,11 +50,7 @@
   </style>
 </head>
 <body>
-    @if (session('errors'))
-    <div class="alert alert-danger text-center">{{(session('errors'))}}</div>
-    @endif
-
-<div class="row">
+<div class="countainer">
     <div class="col-md-4 offset-md-4 mt-5">
         <div class="text-center"><h1 class="card-title">Show<span>Everyone</span></h1></div>
         <div class="card">
