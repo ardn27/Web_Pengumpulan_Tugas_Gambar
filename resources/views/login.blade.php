@@ -8,12 +8,6 @@
     *{
       font-family: Poppins;
     }
-    body {
-        background-image: url(assets/6301.jpg);
-      background-repeat: no-repeat;
-      background-size: 100vw;
-    }
-
     .card {
       max-width: 400px;
       margin: 0 auto;
@@ -24,15 +18,25 @@
       background-color: #fff;
     }
 
+    .title{
+        color: #0802A3;
+    }
+
     .title span{
-        padding: 3px;
+        padding-left: 4px;
+        padding-right: 4px;
         color: #fff;
         border-radius: 30px;
-        background-color: #0066CC;
+        background-color: #0802A3;
     }
     .card-title {
       text-align: center;
       margin-bottom: 20px;
+    }
+
+    .card-header{
+        background-color: #0802A3;
+        color: #fff
     }
 
     .form-label {
@@ -41,6 +45,7 @@
 
     .btn-primary {
       width: 100%;
+      background-color: #0802A3;
     }
 
     .text-center {
@@ -60,9 +65,9 @@
 
 <div class="row">
     <div class="col-md-4 offset-md-4 mt-5">
-        <div class="text-center"><h1 class="title text-primary">Show<span>Everyone</span></h1></div>
+        <div class="text-center"><h1 class="title">Show<span>Everyone</span></h1></div>
         <div class="card">
-            <div class="card-header text-center bg-primary text-light">
+            <div class="card-header text-center">
                 ShowEveryone
             </div>
             <div class="card-body p-2">

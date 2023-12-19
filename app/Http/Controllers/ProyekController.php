@@ -24,6 +24,24 @@ class ProyekController extends Controller
     return view('index-project', compact('user', 'showData'))->with('userLoggedin', auth()->check());
    }
 
+   public function indexApiProject(Request $request)
+{
+    $user = Auth::user();
+    $showData = Proyek::orderBy('created_at', 'desc')->get();
+
+    // Ambil informasi pengguna berdasarkan user_id
+    $userData = User::whereIn('id', $showData->pluck('user_id'))->pluck('name', 'id');
+
+    // Tambahkan informasi pengguna ke setiap proyek
+    $projects = $showData->map(function ($project) use ($userData) {
+        $project['nama_pengguna'] = $userData[$project->user_id] ?? 'Unknown User';
+        return $project;
+    });
+
+    return response()->json(['status' => 200, 'message' => 'success', 'projects' => $projects]);
+}
+
+
    public function About(){
     return view('/about');
    }

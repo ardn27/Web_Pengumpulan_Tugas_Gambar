@@ -36,9 +36,7 @@ class UserController extends Controller
             'password' => 'required',
         ],[
             'email.required' => 'Email Tidak Boleh Kosong',
-            'email.email' => 'Email salah',
             'password.required' => 'Password Tidak Boleh Kosong',
-            'password.password' => 'Password Salah',
         ]);
 
         $credentials = $request->only('email', 'password');
@@ -58,6 +56,9 @@ class UserController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8',
         ],[
+            'name.required' => 'nama tidak boleh kosong',
+            'email.required' => 'email tidak boleh kosong',
+            'password.required' => 'password tidak boleh kosong',
             'email.unique'=> 'email sudah digunakan',
             'password.min' => 'Password minimal 8 karakter',
         ]);

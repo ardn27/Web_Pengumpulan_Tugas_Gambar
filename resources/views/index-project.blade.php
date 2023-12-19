@@ -9,21 +9,23 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Project</title>
 </head>
+@if ($userLoggedin == true)
 @php
-    $namaPengguna = explode(' ', Auth::user()->name);
-    $namaDepan = $namaPengguna[0];
+$namaPengguna = explode(' ', Auth::user()->name);
+$namaDepan = $namaPengguna[0];
 @endphp
+@endif
 <body>
     <nav class="navbar-nav">
         <ul class="logo-nama">Show<span>Everyone</span></ul>
         <ul class="navbar">
-            <li><a href="/">Home</a></li>
-            <li><a href="/project">Project</a></li>
-            <li><a href="/about">About</a></li>
+            <li id="nav1" ><a class="nav-items" href="/">Home</a></li>
+            <li id="nav2"><a class="nav-items" href="/project">Project</a></li>
+            <li id="nav3" ><a class="nav-items" href="/about">About</a></li>
         </ul>
         <ul class="nav-user">
             @if ($userLoggedin == false)
-                <li><a href="/login-form"><i class="fa-solid fa-arrow-right-to-bracket"></i></a>
+                <li><a class="login-button" href="/login-form"><i class="fa-solid fa-arrow-right-to-bracket"></i>Login</a>
                 </li>
             @endif
             @if ($userLoggedin == true)
@@ -98,7 +100,7 @@
                 <div>
                     <img class="image" src="{{ asset('public/image/' . $data->gambar) }}" alt="">
                 </div>
-                <q>{{ $data->deskripsi }}</q>
+                <p class="deskripsi">{{$data->user->name}} : <br>{{ $data->deskripsi }}</p>
                 {{-- <div class="interaksi">
                     <div class="interaksi-icon">
                         <i class="fa-regular fa-heart"></i></a>

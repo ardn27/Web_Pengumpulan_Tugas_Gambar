@@ -15,7 +15,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/Prj-add', [ProyekController::class, 'showPostForm']);
     Route::post('/add-profile-picture', [UserController::class, 'addPictureProfile'])->name('profile_update');
     Route::post('/Prj-add', [ProyekController::class, 'store']);
-    Route::get('/edit-post', [ProyekController::class, 'edit']);
+    Route::post('/edit-post', [ProyekController::class, 'edit']);
     Route::get('/delete-post/{id}', [ProyekController::class, 'delete']);
 });
 

@@ -14,14 +14,12 @@
     <a class="btn-back" href="/project"><i class="fa-solid fa-arrow-left"></i></a>
 <div class="profile-container">
     <div class="profile-header">
-        <!-- File: resources/views/profile/show.blade.php -->
-
         <img src="{{ asset('storage/' . $user->profile_picture) }}" alt="Profile Picture">
         <h3>{{$user->name}}</h3>
         <h3>{{$user->email}}</h3>
-        <div class="profile-info">
+        {{-- <div class="profile-info">
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.</p>
-      </div>
+      </div> --}}
       <div class="btn-edit">
         <a class="btn-edit-profil" href="">
           <i class="fa-regular fa-pen-to-square"></i>
@@ -29,9 +27,8 @@
       </div>
       <form action="/add-profile-picture" method="POST" enctype="multipart/form-data">
         @csrf
-        <!-- Form fields -->
         <input type="file" name="profile_picture">
-        <button type="submit">Update Profile</button>
+        <button type="submit">Upload Profil Picture</button>
     </form>
     </div>
   </div>
@@ -49,17 +46,10 @@
                         <p class="username">{{$data->created_at->diffForHumans()}}</p>
                     </div>
                 </div>
-                    <div>
+                    <div class="profil-post">
                     <img class="image" src="{{ asset('public/image/'. $data->gambar) }}" alt="">
                 </div>
                 <q>{{$data->deskripsi}}</q>
-                {{-- <div class="interaksi">
-                    <div class="interaksi-icon">
-                        <i class="fa-regular fa-heart"></i></a>
-                        <i class="fa-regular fa-comment"></i>
-                    </div>
-
-                </div> --}}
             </div>
         @endforeach
     </div>

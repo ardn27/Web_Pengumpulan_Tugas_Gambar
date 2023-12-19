@@ -8,11 +8,6 @@
     *{
       font-family: Poppins;
     }
-
-    body{
-        background-color: #E0F4FF;
-    }
-
     .card {
       max-width: 400px;
       margin: 0 auto;
@@ -23,17 +18,23 @@
       background-color: #fff;
     }
 
+
     .card-title {
       text-align: center;
       margin-bottom: 20px;
+      color: #0802A3;
     }
 
     .card-title span{
-        background-color: #0066CC;
+        background-color: #0802A3;
         color: #fff;
         border-radius: 40px;
         padding-left: 4px;
         padding-right: 4px;
+    }
+
+    .card-header{
+        background-color: #0802A3;
     }
 
     .form-label {
@@ -42,6 +43,7 @@
 
     .btn-primary {
       width: 100%;
+      background-color: #0802A3;
     }
 
     .text-center {
@@ -54,7 +56,7 @@
     <div class="col-md-4 offset-md-4 mt-5">
         <div class="text-center"><h1 class="card-title">Show<span>Everyone</span></h1></div>
         <div class="card">
-            <div class="card-header text-center bg-primary text-light">
+            <div class="card-header text-center text-light">
                 ShowEveryone
             </div>
             <div class="card-body p-2">
@@ -62,15 +64,18 @@
                     @csrf
                     <div class="form-group">
                       <input type="text"
-                        class="form-control"
+                        class="form-control {{$errors->has('name') ? 'is-invalid' : ''}}"
                         name="name"
-                        placeholder="Masukkan Nama Anda" required/>
+                        placeholder="Nama" />
+                        @error('name')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group pt-2">
                       <input type="email"
                         name="email"
                         class="form-control {{$errors->has('email') ? 'is-invalid' : ''}}" value="{{old('email')}}"
-                        placeholder="Masukkan Email Anda"  required/>
+                        placeholder="Email"  />
                         @error('email')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -79,7 +84,7 @@
                         <input type="password"
                         name="password"
                           class="form-control {{$errors->has('password') ? 'is-invalid' : ''}}" value="{{old('password')}}"
-                          placeholder="Masukkan Password Anda"  required/>
+                          placeholder="Password"  />
                           @error('password')
                             <div class="invalid-feedback">{{$message}}</div>
                           @enderror
